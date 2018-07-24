@@ -1,4 +1,6 @@
 export default interface IBook {
     author: string,
-    name: string
+    name: string,
+    page: number,
+    price: number
 }

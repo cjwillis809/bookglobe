@@ -1,6 +1,6 @@
 import * as React from 'react';
 import './App.css';
-import Books from './containers/books';
+import Books from './containers/Books';
 
 import logo from './logo.svg';
 

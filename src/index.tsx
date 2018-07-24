@@ -6,9 +6,9 @@ import { createStore } from 'redux';
 import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import books from './store/books'
+import Books from './store/Books'
 
-const store = createStore(books);
+const store = createStore(Books);
 
 ReactDOM.render(
   <Provider store={store}>

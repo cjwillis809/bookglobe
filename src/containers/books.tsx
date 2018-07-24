@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 import BooksList from '../components/Book'
-import { IState } from '../store/books'
+import { IState } from '../store/Books'
 
 const mapStateToProps = (state: IState) => ({
   books: state
