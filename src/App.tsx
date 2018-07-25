@@ -1,7 +1,6 @@
 import * as React from 'react';
 import './App.css';
 import BooksList from './components/BooksList';
-// import Books from './containers/Books';
 
 import logo from './logo.svg';
 
