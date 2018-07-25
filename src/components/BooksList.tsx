@@ -39,7 +39,9 @@ const mapStateToProps = (state: AppState) => ({
 
 const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
-        navigateToLogin: () => push('/login'),
+        navigateToLogin: () => {
+            dispatch(push('/login'));
+        },
         onBookClicked: (id: number) => dispatch({type: ActionTypes.DELETE_BOOK, bookId: id})
     }
 }
