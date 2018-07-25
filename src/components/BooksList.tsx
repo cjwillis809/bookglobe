@@ -20,9 +20,11 @@ class BooksList extends React.Component<IProps> {
     public render() {
         return (
             <div>
-                {this.props.books.map(book => (
-                    <div key={book.id}><Book book={book} onBookClicked={ () => this.props.onBookClicked(book.id)}/></div>
-                ))}
+                {this.props.books.length > 0 && 
+                    this.props.books.map(book => (
+                        <div key={book.id}><Book book={book} onBookClicked={ () => this.props.onBookClicked(book.id)}/></div>
+                    ))
+                }
             </div>
         )
     }
