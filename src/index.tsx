@@ -1,14 +1,17 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+
 
 import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import Books from './store/Books'
+import { loadBooks } from './store/Books';
+import configureStore from './store/configureStore';
 
-const store = createStore(Books);
+const store = configureStore();
+
+store.dispatch(loadBooks());
 
 ReactDOM.render(
   <Provider store={store}>
