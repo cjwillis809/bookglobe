@@ -1,25 +1,30 @@
+import { push } from 'connected-react-router';
 import * as React from 'react';
 import { connect } from 'react-redux';
+import { Dispatch } from 'redux';
 
 import BookModel from '../model/Book';
+import { AppState } from '../reducer';
 import * as ActionTypes from '../store/Actions';
 import Book from './Book'
 import './BooksList.css'
 
-interface IProps {
+interface BooksListProps {
     books: BookModel[],
+    navigateToLogin: () => void,
     onBookClicked: (bookId: number) => void
 }
 
 
-class BooksList extends React.Component<IProps> {
-    constructor(props: IProps) {
+class BooksList extends React.Component<BooksListProps> {
+    constructor(props: BooksListProps) {
         super(props);
     }
 
     public render() {
         return (
             <div>
+                <button onClick={() => this.props.navigateToLogin()}>Login</button>
                 {this.props.books.map(book => (
                     <div key={book.id}><Book book={book} onBookClicked={ () => this.props.onBookClicked(book.id)}/></div>
                 ))}
@@ -28,12 +33,13 @@ class BooksList extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    books: state
+const mapStateToProps = (state: AppState) => ({
+    books: state.currentBooks
 })
 
-const mapDispatchToProps = (dispatch: any) => {
+const mapDispatchToProps = (dispatch: Dispatch) => {
     return {
+        navigateToLogin: () => push('/login'),
         onBookClicked: (id: number) => dispatch({type: ActionTypes.DELETE_BOOK, bookId: id})
     }
 }

@@ -1,22 +1,23 @@
+import { ConnectedRouter } from 'connected-react-router';
 import * as React from 'react';
+import { Provider } from 'react-redux';
+import { Route } from 'react-router-dom';
 import './App.css';
 import BooksList from './components/BooksList';
+import LoginPage from './components/pages/LoginPage';
+import store, { history } from './store';
 
-import logo from './logo.svg';
-
-class App extends React.Component {
-  
-  public render() {
-    return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to BookGlobe</h1>
-        </header>
-        <BooksList />
-      </div>
-    );
-  }
+const App = () => {
+  return (
+    <Provider store={store}>
+      <ConnectedRouter history={history}>
+        <div>
+          <Route exact={true} path="/" component={BooksList}/>
+          <Route exact={true} path="/login" component={LoginPage} />
+        </div>
+      </ConnectedRouter>
+    </Provider>
+  );
 }
 
 export default App;
