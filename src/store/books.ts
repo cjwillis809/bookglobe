@@ -1,5 +1,5 @@
-
 import  IBook from '../model/Book'
+import * as ActionTypes from './Actions';
 
 
 const initialState : IBook[] = [
@@ -27,6 +27,10 @@ const initialState : IBook[] = [
 ]
 
 const books = (state = initialState, action: any) => {
+    switch(action.type) {
+        case ActionTypes.DELETE_BOOK:
+            return state.filter(book => book.id !== action.bookId)
+    }
     return state;
 }
 

@@ -1,6 +1,7 @@
 import * as React from 'react';
 import './App.css';
-import Books from './containers/Books';
+import BooksList from './components/BooksList';
+// import Books from './containers/Books';
 
 import logo from './logo.svg';
 
@@ -11,12 +12,9 @@ class App extends React.Component {
       <div className="App">
         <header className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
+          <h1 className="App-title">Welcome to BookGlobe</h1>
         </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Books />
+        <BooksList />
       </div>
     );
   }
