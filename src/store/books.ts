@@ -6,8 +6,10 @@ const initialState : IBook[] = [];
 
 const books = (state = initialState, action: any) => {
     switch(action.type) {
-        case ActionTypes.DELETE_BOOK:
+        case ActionTypes.DELETE_BOOK: {
+            deleteBook(action.idb);
             return state.filter(book => book.id !== action.bookId)
+        }
         case ActionTypes.LOAD_BOOKS_SUCCESS:
             return state = action.bookArray;
         default:
@@ -26,9 +28,20 @@ export function loadBooksSuccess(bookArray: IBook[]) {
 }
 
 export function loadBooks() {
-    const foo = (dispatch: any) => {
+    const loadResult = (dispatch: any) => {
         return BookApi.getAllBooks().then(bookArray => {
             dispatch(loadBooksSuccess(bookArray));
+        }).catch(error => {
+            throw(error);
+        });
+    }
+    return loadResult;
+}
+
+export function deleteBook(id: number) {
+    const foo = (dispatch: any) => {
+        return BookApi.deleteBook(id).then(response => {
+            dispatch(loadBooks());
         }).catch(error => {
             throw(error);
         });

@@ -5,7 +5,17 @@ class BookApi {
       }).catch(error => {
         return error;
       });
-    }
+    };
+
+    public static deleteBook(id: number) {
+      return fetch('https://localhost:5001/api/books/' + id, { 
+        method: "DELETE"
+      }).then(response => {
+        return response;
+    }).catch(error => {
+      return error;
+    });
+  };
 }
 
 export default BookApi;

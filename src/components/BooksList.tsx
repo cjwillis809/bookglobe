@@ -1,8 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-
 import BookModel from '../model/Book';
-import * as ActionTypes from '../store/Actions';
+import { deleteBook } from '../store/Books';
 import Book from './Book'
 import './BooksList.css'
 
@@ -22,7 +21,10 @@ class BooksList extends React.Component<IProps> {
             <div>
                 {this.props.books.length > 0 && 
                     this.props.books.map(book => (
-                        <div key={book.id}><Book book={book} onBookClicked={ () => this.props.onBookClicked(book.id)}/></div>
+                        <div key={book.id}>
+                            <Book book={book} onBookClicked={ 
+                                () => this.props.onBookClicked(book.id)}/>
+                        </div>
                     ))
                 }
             </div>
@@ -36,7 +38,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        onBookClicked: (id: number) => dispatch({type: ActionTypes.DELETE_BOOK, bookId: id})
+        onBookClicked: (id: number) => dispatch(deleteBook(id))
     }
 }
 
