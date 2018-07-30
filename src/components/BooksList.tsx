@@ -1,24 +1,30 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import BookModel from '../model/Book';
-import { deleteBook } from '../store/Books';
+import IBook from '../model/Book';
+import { addBook, deleteBook } from '../store/Books';
+import AddBookForm from './AddBook';
 import Book from './Book'
 import './BooksList.css'
 
 interface IProps {
-    books: BookModel[],
-    onBookClicked: (bookId: number) => void
+    books: IBook[],
+    onBookClicked: (bookId: number) => void,
+    onAddBookClicked: () => void
 }
+
 
 
 class BooksList extends React.Component<IProps> {
     constructor(props: IProps) {
         super(props);
     }
+    
+    
 
     public render() {
         return (
             <div>
+                <AddBookForm onAddBookClicked={ () => this.props.onAddBookClicked() }  />
                 {this.props.books.length > 0 && 
                     this.props.books.map(book => (
                         <div key={book.id}>
@@ -38,6 +44,7 @@ const mapStateToProps = (state: any) => ({
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
+        onAddBookClicked: (book: IBook) => dispatch(addBook(book)),
         onBookClicked: (id: number) => dispatch(deleteBook(id))
     }
 }

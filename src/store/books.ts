@@ -12,6 +12,9 @@ const books = (state = initialState, action: any) => {
         }
         case ActionTypes.LOAD_BOOKS_SUCCESS:
             return state = action.bookArray;
+        case ActionTypes.ADD_BOOK:
+            addBook(action);
+            return state;
         default:
             return state;
     }
@@ -47,4 +50,15 @@ export function deleteBook(id: number) {
         });
     }
     return foo;
+}
+
+export function addBook(book: IBook) {
+    const addBookFoo = (dispatch: any) => {
+        return BookApi.addBook(book).then(response => {
+            dispatch(loadBooks());
+        }).catch(error => {
+            throw(error);
+        });
+    }
+    return addBookFoo;
 }
