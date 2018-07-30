@@ -3,11 +3,7 @@ import { connect } from 'react-redux';
 import IBook from '../model/Book';
 import { addBook } from '../store/Books';
 
-interface ITest {
-    onAddBookClicked(book: IBook): void
-}
-
-class AddBookForm extends React.Component<ITest, IBook> {
+class AddBookForm extends React.Component<any, IBook> {
 
     constructor(props: any) {
         super(props);
@@ -26,7 +22,20 @@ class AddBookForm extends React.Component<ITest, IBook> {
     }
 
     public handleChange(event: any) {
-        this.setState({ title: event.target.value });
+        switch(event.target.name) {
+            case 'title':
+                this.setState({ title: event.target.value });
+                break;
+            case 'author':
+                this.setState({ author: event.target.value });
+                break;
+            case 'pageNumber':
+                this.setState({ pageLength: event.target.value });
+                break;
+            case 'price':
+                this.setState({ price: event.target.value });
+                break;
+        }
     }
 
     public handleSubmit() {
@@ -36,10 +45,11 @@ class AddBookForm extends React.Component<ITest, IBook> {
     public render() {
         return (
             <form className="AddBook book" onSubmit={this.handleSubmit}>
-                <p>Title <input type="text" value={this.state.title} onChange={this.handleChange}/></p>
-                <p>Author <input type="text" value={this.state.author}/></p>
-                <p>Page number <input type="text" value={this.state.pageLength}/></p>
-                <p>Price <input type="text" value={this.state.price}/></p>
+                <h3>Add a book</h3>
+                <p>Title <input type="text" name="title" value={this.state.title} onChange={this.handleChange} /></p>
+                <p>Author <input type="text" name="author" value={this.state.author} onChange={this.handleChange} /></p>
+                <p>Page number <input type="" name="pageNumber" value={this.state.pageLength} onChange={this.handleChange} /></p>
+                <p>Price <input type="text" name="price" value={this.state.price} onChange={this.handleChange} /></p>
                 <input type="submit" value="Submit" />
             </form>
         );
