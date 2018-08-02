@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import IBook from '../model/Book';
-import { deleteBook } from '../store/Books';
+import { deleteBook } from '../store/books';
 import AddBookForm from './AddBook';
 import Book from './Book'
 import './BooksList.css'

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
 import IBook from '../model/Book';
-import { addBook } from '../store/Books';
+import { addBook } from '../store/books';
 
 class AddBookForm extends React.Component<any, IBook> {
 
