@@ -1,3 +1,4 @@
-.Book {
+.bookListDiv {
+    display: flex;
     margin: 2em;
 }

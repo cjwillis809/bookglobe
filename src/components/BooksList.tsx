@@ -22,7 +22,7 @@ class BooksList extends React.Component<IProps> {
 
     public render() {
         return (
-            <div>
+            <div className="bookListDiv">
                 {/* <AddBookForm /> */}
                 {this.props.books.length > 0 && 
                     this.props.books.map(book => (
