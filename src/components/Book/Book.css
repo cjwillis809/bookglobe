@@ -1,0 +1,22 @@
+.bookRoot {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+img {
+    width: 200px;
+    height: 200px;
+    justify-content: center;
+}
+
+.bookInfo {
+    margin-top: 10px;
+}
+  
+.bookText {
+    justify-content: center;
+    font-size: 15px;
+    margin: 0;
+}

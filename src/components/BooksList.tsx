@@ -2,8 +2,8 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import IBook from '../model/Book';
 import { deleteBook } from '../store/books';
-import AddBookForm from './AddBook';
-import Book from './Book'
+// import AddBookForm from './AddBook';
+import Book from './Book/Book'
 import './BooksList.css'
 
 interface IProps {
@@ -23,7 +23,7 @@ class BooksList extends React.Component<IProps> {
     public render() {
         return (
             <div>
-                <AddBookForm />
+                {/* <AddBookForm /> */}
                 {this.props.books.length > 0 && 
                     this.props.books.map(book => (
                         <div key={book.id}>

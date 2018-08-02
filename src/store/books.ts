@@ -7,7 +7,7 @@ const initialState : IBook[] = [];
 const books = (state = initialState, action: any) => {
     switch(action.type) {
         case ActionTypes.DELETE_BOOK: {
-            deleteBook(action.idb);
+            deleteBook(action.id);
             return state.filter(book => book.id !== action.bookId)
         }
         case ActionTypes.LOAD_BOOKS_SUCCESS:
