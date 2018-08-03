@@ -7,6 +7,7 @@ import { AppState } from '../../store';
 import './Header.css';
 
 interface HeaderProps {
+    isAuthenticated: boolean,
     navigateToLogin: () => void
 }
 
@@ -20,7 +21,11 @@ class Header extends React.Component<HeaderProps, AppState> {
             <div className="headerRoot">
                 <img src={logo} className="headerLogo" alt="logo" />
                 <h1 className="headerTitle">BookGlobe</h1>
-                <button className="headerLoginButton" onClick={this.props.navigateToLogin}>Login</button>
+                { this.props.isAuthenticated ? (
+                    <button>Logout</button>
+                ) : (
+                    <button className="headerLoginButton" onClick={this.props.navigateToLogin}>Login</button>
+                )} 
             </div>
         )
     }
