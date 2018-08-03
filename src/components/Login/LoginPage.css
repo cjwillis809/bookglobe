@@ -1,0 +1,14 @@
+.loginRoot {
+    display: flex;
+    flex-direction: column;
+}
+
+.loginHeader {
+    display: flex;
+    justify-content: center;
+}
+
+.loginForm {
+    display: flex;
+    flex-direction: column;
+}
