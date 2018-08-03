@@ -2,7 +2,7 @@ import * as React from 'react';
 import './Book.css';
 
 
-const book = (props:any) => (
+const BookComponent = (props:any) => (
     <div className="bookRoot">
         <img className="bookCover" src={props.book.coverImage} />
         <div className="bookInfo">
@@ -14,4 +14,4 @@ const book = (props:any) => (
     </div>
 );
 
-export default book;
+export default BookComponent;

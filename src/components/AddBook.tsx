@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import IBook from '../model/Book';
-import { addBook } from '../store/books';
+import Book from '../model/Book';
+import { addBook } from '../store/BookReducer';
 
-class AddBookForm extends React.Component<any, IBook> {
+class AddBookForm extends React.Component<any, Book> {
 
     constructor(props: any) {
         super(props);
@@ -58,7 +58,7 @@ class AddBookForm extends React.Component<any, IBook> {
 
 const mapDispatchToProps = (dispatch: any) => {
     return {
-        onAddBookClicked: (book: IBook) => dispatch(addBook(book))
+        onAddBookClicked: (book: Book) => dispatch(addBook(book))
     }
 }
 

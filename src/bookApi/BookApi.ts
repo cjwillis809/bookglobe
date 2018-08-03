@@ -1,4 +1,4 @@
-import IBook from './../model/Book';
+import Book from './../model/Book';
 
 class BookApi {
   public static getAllBooks() {
@@ -19,7 +19,7 @@ class BookApi {
     });
   };
 
-  public static addBook(book: IBook) {
+  public static addBook(book: Book) {
     return fetch('https://localhost:5001/api/books/', {
       body: JSON.stringify(book),
       headers: {

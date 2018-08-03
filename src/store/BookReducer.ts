@@ -1,32 +1,32 @@
 import BookApi from '../bookApi/BookApi';
-import IBook from '../model/Book'
-import * as ActionTypes from './Actions';
+import Book from '../model/Book'
+import { Action, ActionTypes } from "./Actions";
 
-const initialState : IBook[] = [];
+export interface BookState {
+    currentBooks: Book[];
+}
 
-const books = (state = initialState, action: any) => {
+export const bookInitialState : BookState = {
+    currentBooks: []
+}
+
+export function bookReducer(state = bookInitialState, action: Action) {
     switch(action.type) {
-        case ActionTypes.DELETE_BOOK: {
-            deleteBook(action.id);
-            return state.filter(book => book.id !== action.bookId)
-        }
+        // case ActionTypes.DELETE_BOOK:
+        //     deleteBook(action.id);
+        //     return state.currentBooks.filter(book => book.id !== action.bookId)
         case ActionTypes.LOAD_BOOKS_SUCCESS:
-            return state = action.bookArray;
-        case ActionTypes.ADD_BOOK:
-            addBook(action);
-            return state;
+            return {...state, currentBooks: action.books}
+        // case ActionTypes.ADD_BOOK:
+        //     addBook(action);
+        //     return state;
+        case ActionTypes.GET_BOOKS:
         default:
             return state;
     }
 }
 
-export default books;
-
-export interface IState {
-    state: IBook[];
-}
-
-export function loadBooksSuccess(bookArray: IBook[]) {
+export function loadBooksSuccess(bookArray: Book[]) {
     return { type: ActionTypes.LOAD_BOOKS_SUCCESS, bookArray }
 }
 
@@ -52,7 +52,7 @@ export function deleteBook(id: number) {
     return foo;
 }
 
-export function addBook(book: IBook) {
+export function addBook(book: Book) {
     const addBookFoo = (dispatch: any) => {
         return BookApi.addBook(book).then(response => {
             dispatch(loadBooks());

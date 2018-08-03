@@ -1,20 +1,21 @@
 import * as React from 'react';
 import { connect } from 'react-redux';
-import IBook from '../model/Book';
-import { deleteBook } from '../store/books';
+import Book from '../model/Book';
+import { AppState } from '../store';
+import { deleteBook } from '../store/BookReducer';
 // import AddBookForm from './AddBook';
-import Book from './Book/Book'
+import BookComponent from './Book/Book'
 import './BooksList.css'
 
-interface IProps {
-    books: IBook[],
+interface BookListProps {
+    books: Book[],
     onBookClicked: (bookId: number) => void,
 }
 
 
 
-class BooksList extends React.Component<IProps> {
-    constructor(props: IProps) {
+class BooksList extends React.Component<BookListProps> {
+    constructor(props: BookListProps) {
         super(props);
     }
     
@@ -27,7 +28,7 @@ class BooksList extends React.Component<IProps> {
                 {this.props.books.length > 0 && 
                     this.props.books.map(book => (
                         <div key={book.id}>
-                            <Book book={book} onBookClicked={ 
+                            <BookComponent book={book} onBookClicked={ 
                                 () => this.props.onBookClicked(book.id)}/>
                         </div>
                     ))
@@ -37,8 +38,8 @@ class BooksList extends React.Component<IProps> {
     }
 }
 
-const mapStateToProps = (state: any) => ({
-    books: state
+const mapStateToProps = (state: AppState) => ({
+    books: state.currentBooks.currentBooks
 })
 
 const mapDispatchToProps = (dispatch: any) => {

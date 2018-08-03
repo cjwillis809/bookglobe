@@ -6,12 +6,12 @@ import { Provider } from 'react-redux';
 import App from './App';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import { loadBooks } from './store/books';
+import { fetchAllBooks } from './store/Actions';
 import configureStore from './store/configureStore';
 
 const store = configureStore();
 
-store.dispatch(loadBooks());
+store.dispatch(fetchAllBooks());
 
 ReactDOM.render(
   <Provider store={store}>

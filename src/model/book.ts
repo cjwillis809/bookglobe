@@ -1,4 +1,4 @@
-export default interface IBook {
+export default interface Book {
     author: string,
     coverImage: any,
     genre: string,
