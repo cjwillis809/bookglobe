@@ -1,13 +1,12 @@
 import * as React from "react";
+import Header from "../Header/Header";
 
 // interface LoginProps {}
 
 const LoginPage = () => {
     return (
         <div className="loginRoot">
-            <div className="loginHeader">
-                <h1> BookGlobe </h1>
-            </div>
+            <Header />
             <div className="loginForm">
                 <p>Form</p>
             </div>

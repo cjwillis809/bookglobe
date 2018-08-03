@@ -1,0 +1,24 @@
+.headerRoot {
+    text-align: center;
+    background-color: #222;
+    color: white;
+}
+
+.headerLogo {
+    font-size: large;
+}
+
+.headerTitle {
+    font-size: 1.5em;
+    margin-top: 0;
+}
+
+.headerLoginButton {
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+@keyframes App-logo-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}

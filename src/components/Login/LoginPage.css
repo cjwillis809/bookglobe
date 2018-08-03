@@ -1,11 +1,7 @@
 .loginRoot {
     display: flex;
     flex-direction: column;
-}
-
-.loginHeader {
-    display: flex;
-    justify-content: center;
+    align-items: center;
 }
 
 .loginForm {
